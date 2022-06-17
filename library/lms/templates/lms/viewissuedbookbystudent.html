@@ -20,7 +20,13 @@
     position: absolute;
 }
     }
-
+    @media (min-width: 992px){
+        .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: end;
+}
+    }
 table.redTable {
 border: 2px solid #A40808;
 background-color: #EEE7DB;
@@ -75,9 +81,30 @@ border-radius: 5px;
 
   </head>
   <body>
-    
-<br><br>
-  <h3 class="p-3 mb-2 text-bg-success text-white" style = 'font-size: 50px;text-align:center;margin: 0;'>Books Issued To You!</h3>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CENTRAL LIBRARY</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'lms:success' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'lms:viewissuedbookbystudent' %}">VIEW BOOKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'lms:logout' %}?next={{request.path}}">LOGOUT</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <h1 class=" text-bg-success text-white mb-3 p-3" style="text-align: center;">Books Issued To You!</h1>
 
 <div class="row">
 

@@ -17,5 +17,6 @@ urlpatterns=[
     path('issuebook/',views.issuebook_view,name='issuebook'),
     path('viewissuedbook/',views.viewissuedbook_view,name='viewissuedbook'),
     path('viewissuedbookbystudent/',views.viewissuedbookbystudent,name='viewissuedbookbystudent'),
+    path('logout/',views.logout,name='logout'),
    
 ]

@@ -10,13 +10,24 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User,Group
 from . import forms,models
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required,user_passes_test
 # Create your views here.
+
+def is_admin(user):
+    return user.groups.filter(name='ADMIN').exists()
+
 def home(request):
     return render(request,'lms/home.html')
+
+@login_required(login_url='login')
 def success(request):
     return render(request,'lms/success.html')
+
+
+
 def success_admin(request):
     return render(request,'lms/success_admin.html')
+
 def my_view(request):
     if request.method=='POST':
         print(request.POST)
@@ -30,6 +41,7 @@ def my_view(request):
             return redirect('/success')
     else:
         return render(request,'lms/student_login.html')
+
 def admin_view(request):
     if request.method=='POST':
         username = request.POST['username']
@@ -42,6 +54,9 @@ def admin_view(request):
             return redirect('/success_admin')
     else:
         return render(request,'lms/admin_login.html')
+
+
+
 def add_books(request):
     if request.method=='POST':
         name=request.POST['name']
@@ -82,6 +97,9 @@ def studentsignup_view(request):
 
         return redirect('/login')
     return render(request,'lms/signup.html',context=mydict)
+
+
+
 def issuebook_view(request):
     form=forms.IssuedBookForm()
     if request.method=='POST':
@@ -94,6 +112,9 @@ def issuebook_view(request):
             obj.save()
             return render(request,'lms/inter.html')
     return render(request,'lms/issuebook.html',{'form':form})
+
+
+
 def viewissuedbook_view(request):
     issuedbooks=models.issuedbook.objects.all()
     li=[]
@@ -106,7 +127,8 @@ def viewissuedbook_view(request):
             i=i+1
             li.append(t)
     return render(request,'lms/viewissuedbook.html',{'li':li})
-    
+
+login_required(login_url='login/')
 def viewissuedbookbystudent(request):
     student=models.student.objects.filter(user_id=request.user.id) #gets logged in student object
     issuedbook=models.issuedbook.objects.filter(enrollment=student[0].enrollment) #gets the issued books of enrollment of logged in student
@@ -118,3 +140,6 @@ def viewissuedbookbystudent(request):
             li1.append(t)
 
     return render(request,'lms/viewissuedbookbystudent.html',{'li1':li1})
+
+def logout(request):
+    return render(request,'lms/logged_out.html')

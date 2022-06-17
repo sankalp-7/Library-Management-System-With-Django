@@ -16,6 +16,21 @@
     justify-content: end;
 }
     }
+    .card{
+        top:50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        width: 35%;
+        height:auto;
+        justify-content: space-around;
+        align-items: center;
+        height: 300px;
+        background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+
+
+    }
 
 </style>
 </head>
@@ -41,12 +56,14 @@
         <a class="nav-link" href="{% url 'lms:viewissuedbook' %}">VIEW ISSUED BOOKS</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">LOGOUT</a>
+        <a class="nav-link" href="{% url 'lms:home' %}">LOGOUT</a>
       </li>
     </ul>
   </div>
 </nav>
+
 {% block content%}
+
 {% endblock%}
 
 </body>
