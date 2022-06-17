@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+    @media (min-width: 992px){
+
+        .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: end;
+}
+    }
+
+</style>
+</head>
+<body>
+  {% load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">CENTRAL LIBRARY</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'lms:addbook' %}">ADD BOOKS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'lms:viewbook' %}">VIEW BOOKS</a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lms:issuebook' %}">ISSUE BOOKS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lms:viewissuedbook' %}">VIEW ISSUED BOOKS</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">LOGOUT</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% block content%}
+{% endblock%}
+
+</body>
+</html>

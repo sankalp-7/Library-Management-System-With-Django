@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>STUDENT LOGIN</title>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+    body{
+        background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+    }
+    .card{
+        top:50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        width: 35%;
+        height:auto;
+    }
+    .btn{
+        margin-top: 50px;
+    }
+    .signup-link{
+        color:rgb(105, 160, 243);
+        text-align:center;
+        margin-top: 15px;
+    }
+</style>
+    </head>
+
+    <body>
+        <h2 style="text-align: center; color:white; text-decoration:underline;">Student Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="card card-body text-bg-dark mb-2">
+                <div class="mb-3 form-dark">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                  </div>
+                  <input type="submit" name="submit" class="btn btn-outline-primary">
+                  <a href="{% url 'lms:signup' %}" class="signup-link">New User? Signup</a>
+            </div>
+          </form>
+    </body>
+
+</html>

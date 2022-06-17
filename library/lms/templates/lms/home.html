@@ -1,0 +1,22 @@
+
+{% extends 'as_navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="main" style="display: flex; flex-direction:row; justify-content:center;align-items:center; margin-top:50px;gap:40px;">
+    <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+        <img src="{% static 'admin.webp' %}" class="card-img-top" alt="nope">
+        <div class="card-body">
+          <p class="card-text">Only For Admins!</p>
+          <a href="{% url 'lms:adminlogin' %}" class="btn btn-outline-success">ADMIN LOGIN</a>
+        </div>
+      </div>
+      <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+        <img src="{% static 'student2.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body text-bg-dark">
+          <p class="card-text">Only For Students!</p>
+          <a href="{% url 'lms:studentlogin' %}" class="btn btn-outline-success">STUDENT LOGIN</a>
+        </div>
+      </div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "lms/success_admin.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    {% block content %}
+    <div>
+        <form  method="post" class="form-control mb-2s">
+
+    			<h2>ISSUE BOOK TO STUDENT</h2>
+
+		{% csrf_token %}
+
+            {% for field in form %}
+            <div class="form-control mb-3">
+              <label class="form-label mb-2">{{ field.label_tag }}</label>
+              <div class="container">
+              {{ field }}
+               </div>
+            </div>
+            {% endfor %}
+
+
+    		<div class="form-control">
+    			<div class="col-xs-8 col-xs-offset-4">
+            <button type="submit" class="btn btn-success" style="width: 150px;">ISSUE</button>
+    			</div>
+    		</div>
+        </form>
+    	<!-- <div class="text-center">View Issued Book to Student  <a href="viewissuedbook">Click here</a></div> -->
+    </div>
+    {% endblock %}
+</body>
+</html>

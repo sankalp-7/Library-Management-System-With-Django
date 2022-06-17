@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+    @media (min-width: 992px){
+        .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: end;
+}
+    }
+    .card{
+        border-radius: 0;
+        text-align: center;
+    }
+    .sdiv{
+        margin-left: 38%;
+    
+    }
+</style>
+</head>
+<body>
+    {% load static %}
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CENTRAL LIBRARY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'lms:viewissuedbookbystudent' %}">VIEW BOOKS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">LOGOUT</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="card card-body text-bg-success">
+    <h5 style="text-align:center;">welcome {{request.user.first_name}}!</h5>
+  </div>
+
+  <div class="card text-bg-dark sdiv" style="width: 18rem;">
+    <img src="{% static 'student2.jpg' %}" class="card-img-top" alt="nope">
+    <div class="card-body">
+      <p class="card-text">As you are a student, you can view the books issued to you by the librarian</p>
+      <a href="{% url 'lms:viewissuedbookbystudent' %}" class="btn btn-outline-primary">VIEWS ISSUED BOOKS</a>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+</html>

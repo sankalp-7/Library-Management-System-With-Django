@@ -1,0 +1,44 @@
+{% extends "lms/success_admin.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #537895;
+    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+        }
+        .btn{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    {% block content%}
+    <br><br>
+    <form method="post">
+        {% csrf_token %}
+        <div class="card card-body mb-2">
+            <div class="mb-3">
+                <label for="name" class="form-label">BOOK NAME</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+              <div class="mb-3">
+                <label for="isbn" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbn" name="isbn">
+              </div>
+              <div class="mb-3">
+                <label for="author" class="form-label">AUTHOR</label>
+                <input type="text" class="form-control" id="author" name="author">
+              </div>
+              <input type="submit" name="submit" class="btn btn-success">
+        </div>
+      </form>
+{% endblock%}
+</body>
+</html>
