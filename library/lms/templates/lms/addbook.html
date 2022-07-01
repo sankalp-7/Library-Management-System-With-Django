@@ -10,8 +10,8 @@
     <title>Document</title>
     <style>
         body{
-            background-color: #537895;
-    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+            background-color: #363839;
+
         }
         .btn{
             margin-top: 50px;
@@ -25,15 +25,15 @@
         {% csrf_token %}
         <div class="card card-body mb-2">
             <div class="mb-3">
-                <label for="name" class="form-label">BOOK NAME</label>
+                <label for="name" class="form-label" style="color: white;">BOOK NAME</label>
                 <input type="text" class="form-control" id="name" name="name">
               </div>
               <div class="mb-3">
-                <label for="isbn" class="form-label">ISBN</label>
+                <label for="isbn" class="form-label" style="color: white;">ISBN</label>
                 <input type="text" class="form-control" id="isbn" name="isbn">
               </div>
               <div class="mb-3">
-                <label for="author" class="form-label">AUTHOR</label>
+                <label for="author" class="form-label" style="color: white;">AUTHOR</label>
                 <input type="text" class="form-control" id="author" name="author">
               </div>
               <input type="submit" name="submit" class="btn btn-success">

@@ -7,6 +7,10 @@
     <title>Document</title>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins&family=Tapestry&family=Titan+One&family=Water+Brush&display=swap" rel="stylesheet">
 <style>
     @media (min-width: 992px){
 
@@ -15,6 +19,24 @@
     flex-basis: auto;
     justify-content: end;
 }
+    }
+    .card1{
+      background-color: #222525;
+      width: 50%;
+      height: 40%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .info{
+      font-family:Titan One;
+      font-size: 20px;
+      color: rgb(233, 224, 224);
     }
     .card{
         top:50%;
@@ -37,7 +59,7 @@ background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
 <body>
   {% load static %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">CENTRAL LIBRARY</a>
+  <a class="navbar-brand" href="{% url 'lms:success_admin' %}">CENTRAL LIBRARY</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -63,6 +85,10 @@ background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
 </nav>
 
 {% block content%}
+<div class="card1">
+<p class="info">Total Books:-{{books|length}}</p>
+<p class="info">Total Students:-{{users|length}}</p>
+</div>
 
 {% endblock%}
 

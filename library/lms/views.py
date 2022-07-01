@@ -26,7 +26,10 @@ def success(request):
 
 
 def success_admin(request):
-    return render(request,'lms/success_admin.html')
+    users=models.student.objects.values_list('user',flat=True).distinct()
+    books=models.book.objects.values_list('book_name',flat=True).distinct()
+    dict={'users':users,'books':books}
+    return render(request,'lms/success_admin.html',context=dict)
 
 def my_view(request):
     if request.method=='POST':
