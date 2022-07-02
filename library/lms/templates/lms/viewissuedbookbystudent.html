@@ -117,22 +117,29 @@ border-radius: 5px;
   <th>Enrollment</th>
     <th>Book Name</th>
       <th>Author</th>
+      <th>Issued Date</th>
+      <th>Expiry Date</th>
+      <th>Fine</th>
   </tr>
   </thead>
-  <tfoot>
+  <!-- <tfoot>
   <tr>
   <td colspan="5">
   <div class="links"></div>
   </td>
   </tr>
-  </tfoot>
+  </tfoot> -->
   <tbody>
     {% for t in li1 %}
 <tr>
-  <td>  {{t.0}}</td>
-  <td>  {{t.1}}</td>
-  <td>  {{t.2}}</td>
-  <td>  {{t.3}}</td>
+  <td>{{t.0}}</td>
+  <td>{{t.1}}</td>
+  <td>{{t.2}}</td>
+  <td>{{t.3}}</td>
+  <td>{{t.4}}</td>
+  <td>{{t.5}}</td>
+  <td>{{t.6}}</td>
+
  
 </tr>
 
@@ -154,6 +161,6 @@ border-radius: 5px;
 
 
 
-
+<marquee behavior="scroll" direction="left" style="top:90%;position: absolute;background-color: #fc6767;color: white;">***Please Return Before The Expiry Date To Avoid Any Fine</marquee>
   </body>
 </html>

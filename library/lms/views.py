@@ -1,5 +1,3 @@
-
-
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,admin
@@ -9,6 +7,7 @@ from django.views.generic import ListView,UpdateView,DeleteView,CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User,Group
 from . import forms,models
+from datetime import date
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 # Create your views here.
@@ -106,7 +105,6 @@ def studentsignup_view(request):
 def issuebook_view(request):
     form=forms.IssuedBookForm()
     if request.method=='POST':
-        #now this form have data from html
         form=forms.IssuedBookForm(request.POST)
         if form.is_valid():
             obj=models.issuedbook()
@@ -124,22 +122,37 @@ def viewissuedbook_view(request):
     for ib in issuedbooks:
         books=list(models.book.objects.filter(isbn=ib.isbn))
         students=list(models.student.objects.filter(enrollment=ib.enrollment))
+        days = (date.today()-ib.issued_date)
+        d=days.days
+        fine=0
+        if d>14:
+            day=d-14
+            fine=day*5
         i=0
         for l in books:
-            t=(students[i].get_name,students[i].enrollment,books[i].book_name,books[i].author)
+            t=(students[i].get_name,students[i].enrollment,books[i].book_name,books[i].author,issuedbooks[i].issued_date,issuedbooks[i].expiry_date,fine)
             i=i+1
             li.append(t)
     return render(request,'lms/viewissuedbook.html',{'li':li})
 
 login_required(login_url='login/')
 def viewissuedbookbystudent(request):
+    issuedbooks=models.issuedbook.objects.all()
     student=models.student.objects.filter(user_id=request.user.id) #gets logged in student object
     issuedbook=models.issuedbook.objects.filter(enrollment=student[0].enrollment) #gets the issued books of enrollment of logged in student
     li1=[]
     for ib in issuedbook:
         books=models.book.objects.filter(isbn=ib.isbn) #gets all books whoose isbn is same as the isbn of the books with enrollment value same as the enrollment value of the logged in student
+        days = (date.today()-ib.issued_date)
+        d=days.days
+        fine=0
+        if d>14:
+            day=d-14
+            fine=day*5
+        i=0
         for book in books:
-            t=(request.user,student[0].enrollment,book.book_name,book.author)
+            t=(request.user,student[0].enrollment,book.book_name,book.author,ib.issued_date,ib.expiry_date,fine)
+            i=i+1
             li1.append(t)
 
     return render(request,'lms/viewissuedbookbystudent.html',{'li1':li1})
