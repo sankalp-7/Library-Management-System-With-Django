@@ -1,11 +1,9 @@
-from asyncio.windows_events import NULL
-from re import T
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime,timedelta
 # Create your models here.
 class student(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE,default=NULL)
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
     name=models.CharField(max_length=20)
     enrollment=models.IntegerField()
 
